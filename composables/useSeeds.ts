@@ -80,21 +80,25 @@ export function useSeeds() {
     }
   }
 
-  function loadSeed(seedId: string, onLoad: (seed: GameSeed) => void) {
+  function loadSeed(seedId: string, onLoad: (seed: GameSeed) => void, onError?: () => void): boolean {
     const sampleSeed = sampleSeeds.find(s => s.id === seedId)
     if (sampleSeed) {
       onLoad(sampleSeed)
-      return
+      return true
     }
 
     const historySeeds = getHistorySeeds()
     const historySeed = historySeeds.find(s => s.id === seedId)
     if (historySeed) {
       onLoad(historySeed)
-      return
+      return true
     }
 
     console.warn('Seed not found:', seedId)
+    if (onError) {
+      onError()
+    }
+    return false
   }
 
   const copySeedId = async (seedId: string) => {

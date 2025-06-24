@@ -25,10 +25,11 @@
           type="text"
           placeholder="Enter seed ID"
           class="input-field seed-input"
+          @keyup.enter="handleLoadSeed"
         >
         <button
           class="btn btn-primary"
-          @click="loadSeed(seedInput, restartGame)"
+          @click="handleLoadSeed"
         >
           Load Seed
         </button>
@@ -89,18 +90,19 @@
       @close="handleWinnerPopupClose"
     />
 
-    <div
+    <Notification
       v-if="showRestoredNotification"
-      class="success-notification"
-    >
-      <span>✅ Saved game restored! You can continue from where you left off.</span>
-      <button
-        class="success-notification-close"
-        @click="showRestoredNotification = false"
-      >
-        ×
-      </button>
-    </div>
+      message="✅ Saved game restored! You can continue from where you left off."
+      type="success"
+      @close="showRestoredNotification = false"
+    />
+
+    <Notification
+      v-if="showErrorNotification"
+      :message="errorMessage"
+      type="error"
+      @close="showErrorNotification = false"
+    />
   </div>
 </template>
 
@@ -137,6 +139,8 @@ const currentSeed = ref<GameSeed | null>(null)
 const flippedTiles = ref<Tile[]>([])
 const showHistory = ref(false)
 const isAnimating = ref(false)
+const showErrorNotification = ref(false)
+const errorMessage = ref('')
 
 const { tiles, createTiles, generateSeedFromCurrentLayout, canvasWidth, canvasHeight } = useTileManager({
   skins,
@@ -173,8 +177,35 @@ function handleReplayGame(seedId: string) {
   loadSeed(seedId, (seed) => {
     restartGame(seed)
     showHistory.value = false
+  }, () => {
+    errorMessage.value = '❌ Seed not found! Please check the seed ID and try again.'
+    showErrorNotification.value = true
+    setTimeout(() => {
+      showErrorNotification.value = false
+    }, 5000)
   })
 };
+
+function handleLoadSeed() {
+  if (!seedInput.value.trim()) {
+    errorMessage.value = '❌ Please enter a seed ID to load.'
+    showErrorNotification.value = true
+    setTimeout(() => {
+      showErrorNotification.value = false
+    }, 5000)
+    return
+  }
+
+  loadSeed(seedInput.value, (seed) => {
+    restartGame(seed)
+  }, () => {
+    errorMessage.value = '❌ Seed not found! Please check the seed ID and try again.'
+    showErrorNotification.value = true
+    setTimeout(() => {
+      showErrorNotification.value = false
+    }, 5000)
+  })
+}
 
 function handleClick(event: MouseEvent | TouchEvent) {
   if (!canvas.value || isGameOver.value)

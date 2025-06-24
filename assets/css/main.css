@@ -21,9 +21,12 @@
   --card-gradient: linear-gradient(196deg, rgba(2, 0, 36, 1) 4%, var(--surface-color-dark) 53%, var(--primary-color) 100%);
 
 
-  --background-color-notification: #d4edda;
-  --text-color-notification: #155724;
-  --text-color-notification-hover: #0f5132;
+  --background-color-notification-success: #d4edda;
+  --background-color-notification-error: #f8d7da;
+  --text-color-notification-success: #155724;
+  --text-color-notification-success-hover: #0f5132;
+  --text-color-notification-error: #721c24;
+  --text-color-notification-error-hover: #58151e;
 
   --background-difficulty-badge-easy: #d4edda;
   --background-difficulty-badge-medium: #fff3cd;
