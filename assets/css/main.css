@@ -1,0 +1,286 @@
+:root {
+  --primary-color: #4a90e2;
+  --primary-color-hover: #357abd;
+  --secondary-color: #6c757d;
+  --secondary-color-hover: #5a6268;
+  --danger-color: #dc3545;
+  --danger-color-hover: #c82333;
+  --success-color: #28a745;
+  --success-color-hover: #218838;
+
+  --bg-color: #00163a;
+  --surface-color: #ffffff;
+  --surface-color-dark: #0d2c54;
+  --text-color-light: #ffffff;
+  --text-color-dark: #333333;
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --background-dark-transparent: #ffffff1a;
+  --background-unfocused: #000000cc;
+  --background-color-shadow: #00000033;
+  --card-gradient: linear-gradient(196deg, rgba(2, 0, 36, 1) 4%, var(--surface-color-dark) 53%, var(--primary-color) 100%);
+
+
+  --background-color-notification: #d4edda;
+  --text-color-notification: #155724;
+  --text-color-notification-hover: #0f5132;
+
+  --background-difficulty-badge-easy: #d4edda;
+  --background-difficulty-badge-medium: #fff3cd;
+  --background-difficulty-badge-hard: #f8d7da;
+  --text-difficulty-badge-easy: #155724;
+  --text-difficulty-badge-medium: #856404;
+  --text-difficulty-badge-hard: #721c24;
+
+  --stat-color-excellent: #28a745;
+  --stat-color-good: #17a2b8;
+  --stat-color-average: #ffc107;
+  --stat-color-poor: #dc3545;
+
+  --font-family-base: 'Roboto', sans-serif;
+  --border-radius: 8px;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: var(--font-family-base);
+  color: var(--text-color-light);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0 0 1.5rem 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px var(--shadow-color);
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  color: var(--text-color-light);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.btn-primary {
+  background: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background: var(--primary-color-hover);
+}
+
+.btn-secondary {
+  background: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+  background: var(--secondary-color-hover);
+}
+
+.btn-danger {
+  background: var(--danger-color);
+}
+
+.btn-danger:hover {
+  background: var(--danger-color-hover);
+}
+
+.btn-success {
+  background: var(--success-color);
+}
+
+.btn-success:hover {
+  background: var(--success-color-hover);
+}
+
+.btn-small {
+  padding: 5px 10px;
+  font-size: 0.8em;
+}
+
+.difficulty-badge.easy {
+  background: var(--background-difficulty-badge-easy);
+  color: var(--text-difficulty-badge-easy);
+}
+
+.difficulty-badge.medium {
+  background: var(--background-difficulty-badge-medium);
+  color: var(--text-difficulty-badge-medium);
+}
+
+.difficulty-badge.hard {
+  background: var(--background-difficulty-badge-hard);
+  color: var(--text-difficulty-badge-hard);
+}
+
+.card {
+  padding: 15px;
+  background: var(--surface-color-dark);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--secondary-color);
+}
+
+.input-field {
+  padding: 8px 12px;
+  border: 2px solid var(--primary-color);
+  border-radius: 6px;
+  background: var(--surface-color);
+  font-size: 1em;
+  color: var(--text-color-dark);
+  transition: all 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary-color-hover);
+  box-shadow: 0 0 0 2px var(--surface-color-dark);
+} 
+
+.seed-id {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+  word-break: break-all;
+  line-height: 1.4;
+}
+
+.seed-display {
+  background: var(--background-color-shadow);
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ffffff33;
+}
+
+.difficulty-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.difficulty-badge.excellent {
+  color: var(--stat-color-excellent);
+}
+
+.difficulty-badge.good {
+  color: var(--stat-color-good);
+}
+
+.difficulty-badge.average {
+  color: var(--stat-color-average);
+}
+
+.difficulty-badge.poor {
+  color: var(--stat-color-poor);
+}
+
+.stat-value {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.stat-value.excellent {
+  color: var(--stat-color-excellent);
+}
+
+.stat-value.good {
+  color: var(--stat-color-good);
+}
+
+.stat-value.average {
+  color: var(--stat-color-average);
+}
+
+.stat-value.poor {
+  color: var(--stat-color-poor);
+}
+
+.success-notification {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--background-color-notification);
+  color: var(--text-color-notification);
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin: 10px 0;
+  animation: slideIn 0.3s ease-out;
+  word-wrap: break-word;
+}
+
+.success-notification-close {
+  background: none;
+  border: none;
+  color: var(--text-color-notification);
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 15px;
+  line-height: 1;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.success-notification-close:hover {
+  color: var(--text-color-notification-hover);
+}
+
+select{
+    padding: 8px 12px;
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    background: var(--surface-color);
+    font-size: 1em;
+    cursor: pointer;
+    min-width: 120px;
+    color: var(--text-color-dark);
+    transition: all 0.3s ease;
+}
+
+select label{
+  font-weight: 600;
+  font-size: 1.1em;
+  color: var(--text-color-light);
+  white-space: nowrap;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary-color-hover);
+    box-shadow: 0 0 0 2px var(--surface-color-dark);
+  }
+
+  @keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
